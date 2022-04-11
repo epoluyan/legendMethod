@@ -58,4 +58,19 @@ export default class Character {
         this.defense = characters.Zombie.defense;
     }
   }
+
+  levelUp() {
+    if (this.level === 0) {
+      return;
+    }
+    this.level += 1;
+    this.attack = (this.attack / 100) * 20;
+    this.defense = (this.defense / 100) * 20;
+  }
+
+  damage(points) {
+    if (this.health >= 0) {
+      this.health -= points * (1 - this.defense / 100);
+    }
+  }
 }
